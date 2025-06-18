@@ -1,9 +1,9 @@
 import { router, Link } from 'expo-router';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { Colors } from '@/constants/Colors';
+import { useState } from 'react';
 
-const theme = useColorScheme() ?? 'light';
+const [colorScheme, setColorScheme] = useState('light');
 
 export default function Index() {
   return (

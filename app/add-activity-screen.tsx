@@ -1,8 +1,6 @@
 import { router, Link } from 'expo-router';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
 
-// import { Container } from './styles';
-
 export default function AddActivityScreen() {
   return (
     <View style={styles.wrapper}>
