@@ -1,4 +1,4 @@
-import { router } from 'expo-router';
+import { router, Link } from 'expo-router';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
 
 // import { Container } from './styles';
@@ -6,9 +6,9 @@ import { View, StyleSheet, Pressable, Text } from 'react-native';
 export default function Index() {
   return (
     <View style={styles.wrapper}>
-      <Pressable onPress={() => router.push('/add-activity-screen')}>
+      <Link href={'/add-activity-screen'} replace>
         <Text>Add Activity</Text>
-      </Pressable>
+      </Link>
     </View>
   );
 }
@@ -19,7 +19,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  heading: {
-    fontSize: 24,
-  }
 });

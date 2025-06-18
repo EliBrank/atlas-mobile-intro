@@ -1,3 +1,4 @@
+import { router, Link } from 'expo-router';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
 
 // import { Container } from './styles';
@@ -5,9 +6,9 @@ import { View, StyleSheet, Pressable, Text } from 'react-native';
 export default function AddActivityScreen() {
   return (
     <View style={styles.wrapper}>
-      <Pressable onPress={() => }>
-        <Text>Go back</Text>
-      </Pressable>
+      <Link href={'/'} replace>
+        <Text>Go Back</Text>
+      </Link>
     </View>
   );
 }
@@ -18,7 +19,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  heading: {
-    fontSize: 24,
-  }
 });
