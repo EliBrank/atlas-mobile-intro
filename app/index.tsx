@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addActivityButton: {
-    backgroundColor: 
+    backgroundColor: Colors.light.accent
   },
 });
