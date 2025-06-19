@@ -16,10 +16,19 @@ export function useActivities() {
     return db.getAllSync<ActivityProps>('SELECT * FROM activities');
   }
 
-  useEffect(() => {
+  function insertActivity(steps: number, date: Date) {
+    db.execSync(`INSERT INTO activities (${steps},${date.getTime()})`);
+    reload();
+  }
+
+  function reload() {
     const data = getActivities();
     setActivities(data);
+  }
+
+  useEffect(() => {
+    reload();
   }, []);
 
-  return { getActivities, activities };
+  return { getActivities, activities, insertActivity };
 }
