@@ -4,6 +4,7 @@ import { Colors } from '@/constants/Colors';
 import { useState } from 'react';
 import { useActivities } from '@/hooks/useActivities';
 import { useActivitiesContext } from '@/components/ActivitiesProvider';
+import { Activity } from '@/components/Activity';
 
 export default function Index() {
   const [colorScheme, setColorScheme] = useState('light');
@@ -11,9 +12,14 @@ export default function Index() {
 
   return (
     <View style={styles.wrapper}>
-      <Text>
-        {JSON.stringify(activities)}
-      </Text>
+      <View style={styles.activityEntries}>
+        {activities.map((activity) => (
+          <Activity
+            activity={activity}
+            key={activity.id}
+          />
+        ))}
+      </View>
       <View style={styles.mainButtons}>
         <Pressable
           onPress={() => router.replace('/add-activity-screen')}
@@ -37,6 +43,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.secondary,
+  },
+  activityEntries: {
+    width: '100%',
+    paddingInline: 16,
+    marginTop: 16,
   },
   button: {
     width: '100%',
