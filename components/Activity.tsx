@@ -4,7 +4,7 @@ import { Colors } from '@/constants/Colors';
 
 export function Activity({ activity }: { activity: ActivityProps }) {
   // convert epoch time into milliseconds
-  const date = new Date(activity.date * 1000);
+  const date = new Date(activity.date);
   const dateFormatted = date.toLocaleString('en-US', {
     month: 'numeric',
     day: '2-digit',

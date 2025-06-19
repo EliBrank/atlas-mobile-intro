@@ -1,24 +1,23 @@
-import { router, Link } from 'expo-router';
+import { router } from 'expo-router';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import { useState } from 'react';
-import { useActivities } from '@/hooks/useActivities';
+// import { useState } from 'react';
 import { useActivitiesContext } from '@/components/ActivitiesProvider';
 import { Activity } from '@/components/Activity';
+import { FlashList } from '@shopify/flash-list';
 
 export default function Index() {
-  const [colorScheme, setColorScheme] = useState('light');
+  // const [colorScheme, setColorScheme] = useState('light');
   const { activities } = useActivitiesContext();
 
   return (
     <View style={styles.wrapper}>
       <View style={styles.activityEntries}>
-        {activities.map((activity) => (
-          <Activity
-            activity={activity}
-            key={activity.id}
-          />
-        ))}
+        <FlashList
+          renderItem={({ item }) => <Activity activity={item}/>}
+          data={activities}
+          estimatedItemSize={50}
+        />
       </View>
       <View style={styles.mainButtons}>
         <Pressable
@@ -45,9 +44,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.secondary,
   },
   activityEntries: {
+    flex: 1,
     width: '100%',
     paddingInline: 16,
-    marginTop: 16,
+    marginTop: 24,
   },
   button: {
     width: '100%',

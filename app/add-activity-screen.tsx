@@ -2,10 +2,11 @@ import { router, Link } from 'expo-router';
 import { View, StyleSheet, Pressable, Text, TextInput } from 'react-native';
 import { Colors } from '@/constants/Colors';
 import { useState } from 'react';
+import { useActivitiesContext } from '@/components/ActivitiesProvider';
 
 export default function AddActivityScreen() {
   const [steps, setSteps] = useState<number>(0);
-
+  const { insertActivity } = useActivitiesContext();
   return (
     <View style={styles.wrapper}>
       <Text style={styles.heading}>Add Activity</Text>
@@ -15,7 +16,13 @@ export default function AddActivityScreen() {
         onChangeText={(value) => setSteps(parseInt(value))}
         style={styles.activityInput}
       />
-      <Pressable style={[styles.button, styles.addActivityButton]}>
+      <Pressable
+        onPress={() => {
+          insertActivity(steps, new Date());
+          router.replace('/');
+        }}
+        style={[styles.button, styles.addActivityButton]}
+      >
         <Text style={styles.buttonText}>Add Activity</Text>
       </Pressable>
       <Pressable
