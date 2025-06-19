@@ -3,7 +3,7 @@ import { View, StyleSheet, Pressable, Text } from 'react-native';
 import { Colors } from '@/constants/Colors';
 // import { useState } from 'react';
 import { useActivitiesContext } from '@/components/ActivitiesProvider';
-import { Activity } from '@/components/Activity';
+import { SwipeableActivity } from '@/components/SwipeableActivity';
 import { FlashList } from '@shopify/flash-list';
 
 export default function Index() {
@@ -14,7 +14,7 @@ export default function Index() {
     <View style={styles.wrapper}>
       <View style={styles.activityEntries}>
         <FlashList
-          renderItem={({ item }) => <Activity activity={item}/>}
+          renderItem={({ item }) => <SwipeableActivity activity={item}/>}
           data={activities}
           estimatedItemSize={50}
         />

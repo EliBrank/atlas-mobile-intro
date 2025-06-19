@@ -23,6 +23,13 @@ export function useActivities() {
     reload();
   }
 
+  function deleteActivity(id: number) {
+    db.execSync(
+      `DELETE FROM activities WHERE id = ${id}`
+    )
+    reload();
+  }
+
   function deleteActivities() {
     db.execSync(
       `DELETE FROM activities`
@@ -39,5 +46,5 @@ export function useActivities() {
     reload();
   }, []);
 
-  return { getActivities, activities, insertActivity, deleteActivities };
+  return { getActivities, activities, insertActivity, deleteActivities, deleteActivity };
 }
