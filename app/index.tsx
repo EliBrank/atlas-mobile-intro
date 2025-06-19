@@ -8,7 +8,7 @@ import { FlashList } from '@shopify/flash-list';
 
 export default function Index() {
   // const [colorScheme, setColorScheme] = useState('light');
-  const { activities } = useActivitiesContext();
+  const { activities, deleteActivities } = useActivitiesContext();
 
   return (
     <View style={styles.wrapper}>
@@ -27,6 +27,7 @@ export default function Index() {
           <Text style={styles.buttonText}>Add Activity</Text>
         </Pressable>
         <Pressable
+          onPress={() => {deleteActivities()}}
           style={[styles.button, styles.deleteAllActivitiesButton]}
         >
           <Text style={styles.buttonText}>Delete all activities</Text>
