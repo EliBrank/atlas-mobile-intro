@@ -6,6 +6,7 @@ const ActivitiesContext = createContext<ReturnType<typeof useActivities>>({
   getActivities: () => [],
   insertActivity: () => {},
   deleteActivities: () => {},
+  deleteActivity: () => {}
 });
 
 export const useActivitiesContext = () => useContext(ActivitiesContext);
